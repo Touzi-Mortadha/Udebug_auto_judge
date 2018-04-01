@@ -30,6 +30,27 @@ class Udebug:
             ids.append(i['id'])
         return ids
 
+    def get_list_id_hints(self):
+        url = "https://www.udebug.com/hint_api/hint_list/retrieve.json?judge_alias=" + self.judge_alias + "&problem_id=" + problem_id
+        content = json.loads(s.get(url).content.decode('utf-8'))
+        ids = []
+        for i in content:
+            ids.append(i['id'])
+        return ids
+
+    def get_hint(self, id):
+        url = "https://www.udebug.com/hint_api/hint/retrieve.json?hint_id=" + str(id)
+        content = json.loads(s.get(url).content.decode('utf-8'))
+        return content[0]
+
+    def get_all_hints(self):
+        ids = self.get_list_id_hints()
+        idx = 1
+        for i in ids:
+            print ('hint ',idx, ':')
+            print(self.get_hint(i))
+            idx+=1
+
     def get_input(self, id):
         url = "https://www.udebug.com/input_api/input/retrieve.json?input_id=" + str(id)
         content = json.loads(s.get(url).content.decode('utf-8'))
@@ -117,4 +138,6 @@ if __name__ == '__main__':
     problem_id = input("set your problem id ?\n")
     judge = Udebug('UVA', problem_id)
     # judge.run_udebug_tests()
-    judge.run_stress_code()
+    # judge.run_stress_code()
+    judge.get_all_hints()
+
