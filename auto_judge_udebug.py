@@ -8,7 +8,7 @@ import re
 import difflib
 
 # you need to specify your cookie, you can get it from /udebug/api/
-cookie = 'Basic "Unl1dWs6MjcwNjk0MTU="'
+cookie = 'Basic "xxxxxx"'
 headers = {'Authorization': cookie}
 s = requests.Session()
 s.headers.update(headers)
