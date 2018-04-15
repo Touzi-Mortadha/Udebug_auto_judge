@@ -137,7 +137,7 @@ class Udebug:
 
 if __name__ == '__main__':
     problem_id = input("set your problem id ?\n")
-    judge = Udebug('UVA', problem_id)
+    # judge = Udebug('UVA', problem_id)
     # judge.run_udebug_tests()
     # judge.run_stress_code()
     judge.get_all_hints()
