@@ -7,21 +7,22 @@ import subprocess
 import re
 import difflib
 
-# you need to specify your cookie, you can get it from /udebug/api/
 
-class Udebug(object):
+class Udebug:
 
     def __init__(self, judge_alias, problem_id):
+        # you need to specify your cookie, you can get it from /udebug/api/
         cookie = 'Basic "xxxxxxxxx"'
         headers = {'Authorization': cookie}
         self.s = requests.Session()
         self.s.headers.update(headers)
+        
         self.judge_alias = judge_alias
         self.problem_id = str(problem_id)
         # os.system("g++ -std=c++11 -DONLINE_JUDGE main.cpp -o main")
 
     def get_list_id_test(self):
-        url = "https://www.udebug.com/input_api/input_list/retrieve.json?judge_alias=" + self.judge_alias + "&problem_id=" + problem_id
+        url = "https://www.udebug.com/input_api/input_list/retrieve.json?judge_alias=" + self.judge_alias + "&problem_id=" + str(problem_id)
         content = json.loads(self.s.get(url).content.decode('utf-8'))
         ids = []
         for i in content:
