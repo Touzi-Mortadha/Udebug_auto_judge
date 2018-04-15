@@ -77,7 +77,7 @@ class Udebug(object):
         if expected_output == my_output:
             return 'y'
         else:
-            if output == '':
+            if my_output == '':
                 print('probably you have segmentation fault as error !!!')
             else:
                 print('your output does not match with expected output, and this is the difference: ')
